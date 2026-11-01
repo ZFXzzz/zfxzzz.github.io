@@ -2,7 +2,7 @@
 
 Bilingual portfolio covering distributed inference, speech services, GPU diagnosis and engineering case studies.
 
-- Planned GitHub Pages origin: https://zfxzzz.github.io/
+- Website: https://zfxzzz.github.io/
 - Entry point: `index.html`
 - Hosting: static HTML, CSS and JavaScript; no build step.
 - Project links: `?case=k3&lang=zh` or `?case=k2&lang=en`.
