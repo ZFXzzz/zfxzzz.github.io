@@ -6,7 +6,7 @@
   const hero=root.querySelector('.hero-copy');
   if(!hero||hero.querySelector('.explorer'))return;
   const box=document.createElement('div');box.className='explorer';
-  box.innerHTML=`<div class="explorer-label"><span class="explorer-star">✳</span> ${zh()?'从一个工程问题开始':'Start with an engineering question'}<small>EXPLORE / 07</small></div><form class="explorer-form"><input aria-label="${zh()?'搜索项目':'Search projects'}" placeholder="${zh()?'想了解 H20 部署、排障，还是开源贡献？':'Explore H20 deployment, speech or debugging…'}" autocomplete="off"><button aria-label="${zh()?'查找案例':'Find cases'}">↗</button></form><div class="explorer-prompts">${(zh()?['H20 部署','CUDA 排障','语音服务']:['H20 deployment','CUDA debugging','Speech service']).map((x,i)=>`<button type="button" data-explore="${['H20','CUDA','speech'][i]}">${x} <span>↗</span></button>`).join('')}</div><div class="explorer-results" role="region" aria-label="${zh()?'项目搜索结果':'Project search results'}" hidden></div><div class="explorer-status" role="status"></div>`;
+  box.innerHTML=`<div class="explorer-label"><span class="explorer-star">✳</span> ${zh()?'从一个工程问题开始':'Start with an engineering question'}<small>EXPLORE / 07</small></div><form class="explorer-form"><input aria-label="${zh()?'搜索项目':'Search projects'}" placeholder="${zh()?'想了解 H20-3e 部署、排障，还是开源贡献？':'Explore H20-3e deployment, speech or debugging…'}" autocomplete="off"><button aria-label="${zh()?'查找案例':'Find cases'}">↗</button></form><div class="explorer-prompts">${(zh()?['H20-3e 部署','CUDA 排障','语音服务']:['H20-3e deployment','CUDA debugging','Speech service']).map((x,i)=>`<button type="button" data-explore="${['H20-3e','CUDA','speech'][i]}">${x} <span>↗</span></button>`).join('')}</div><div class="explorer-results" role="region" aria-label="${zh()?'项目搜索结果':'Project search results'}" hidden></div><div class="explorer-status" role="status"></div>`;
   hero.append(box);
   const input=box.querySelector('input'),results=box.querySelector('.explorer-results'),status=box.querySelector('.explorer-status');
   function search(query){
@@ -18,7 +18,7 @@
    results.hidden=false;
    results.replaceChildren();
    found.forEach((p,i)=>{const b=document.createElement('button');b.type='button';b.className='explorer-result';b.style.setProperty('--result-index',i);const n=document.createElement('small');n.textContent=`0${projects.indexOf(p)+1}`;const label=document.createElement('span');label.textContent=p.title[zh()?0:1];const arrow=document.createElement('span');arrow.textContent='↗';b.append(n,label,arrow);b.onclick=()=>openCase(p.id);results.append(b)});
-   status.textContent=found.length?(zh()?`${found.length} 个相关案例 · 点击查看工程细节`:`${found.length} related cases · Open the engineering details`):(zh()?'暂无匹配，试试 H20、CUDA、ASR 或 Ray。':'No match. Try H20, CUDA, ASR or Ray.');
+   status.textContent=found.length?(zh()?`${found.length} 个相关案例 · 点击查看工程细节`:`${found.length} related cases · Open the engineering details`):(zh()?'暂无匹配，试试 H20-3e、CUDA、ASR 或 Ray。':'No match. Try H20-3e, CUDA, ASR or Ray.');
   }
   box.querySelector('form').onsubmit=e=>{e.preventDefault();search(input.value)};
   box.querySelectorAll('[data-explore]').forEach(b=>b.onclick=()=>{input.value=b.dataset.explore;search(input.value)});
