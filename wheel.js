@@ -24,7 +24,7 @@
   wheel.addEventListener('pointercancel',()=>startX=null);
   host.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();select(index+(e.key==='ArrowRight'?1:-1));setPlay(false)}});
   host.addEventListener('pointerenter',()=>paused=true);host.addEventListener('pointerleave',()=>paused=false);
-  const timer=setInterval(()=>{if(playing&&!paused&&!document.hidden&&!host.contains(document.activeElement)&&!document.querySelector('dialog[open]')&&!reduced.matches&&host.getBoundingClientRect().bottom>0&&host.getBoundingClientRect().top<innerHeight)select(index+1)},5500);
+  const timer=setInterval(()=>{if(playing&&!paused&&!document.hidden&&(!host.contains(document.activeElement)||document.activeElement===play)&&!document.querySelector('dialog[open]')&&!reduced.matches&&host.getBoundingClientRect().bottom>0&&host.getBoundingClientRect().top<innerHeight)select(index+1)},5500);
   const onReduced=()=>{if(reduced.matches)setPlay(false)};reduced.addEventListener('change',onReduced);
   dispose=()=>{clearInterval(timer);reduced.removeEventListener('change',onReduced)};
  }
