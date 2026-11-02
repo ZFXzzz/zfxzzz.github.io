@@ -358,3 +358,39 @@ dialog[open] {animation:dialog-in .35s var(--ease)}
 @media(prefers-reduced-motion:reduce) {
   .hero-copy,.hero .system,.benchmark-evidence-body{animation:none!important}
 }
+
+/* Question-led exploration and ambient motion */
+.hero {isolation:isolate;overflow:clip}
+.hero::before {inset:-100px -15% -30px;background:radial-gradient(ellipse at 70% 35%,#cdd9ff88,transparent 48%),radial-gradient(ellipse at 25% 80%,#e4dcff88,transparent 45%);animation:ambient-drift 16s ease-in-out infinite alternate}
+.hero h1 em {background:linear-gradient(110deg,#435ebd 15%,#8a88df 45%,#608ed7 65%,#435ebd 90%);background-size:240% 100%;background-clip:text;-webkit-background-clip:text;color:transparent;animation:ink-flow 9s ease-in-out infinite alternate}
+.explorer {position:relative;margin-top:30px;max-width:510px;border:1px solid #d8def0;border-radius:22px;padding:18px;background:#ffffffbd;box-shadow:0 10px 35px #6475ba0c;transition:border-color .3s,box-shadow .3s}
+.explorer:focus-within {border-color:#9caee7;box-shadow:0 8px 40px #6475ba19}
+.explorer-label {display:flex;align-items:center;gap:8px;font-size:12px;color:#5e6d91;margin-bottom:12px}
+.explorer-label small {margin-left:auto;font:9px var(--mono);letter-spacing:1px;color:#8490aa}
+.explorer-star {display:inline-block;font-size:22px;line-height:1;color:#7588ce;animation:star-turn 22s linear infinite}
+.explorer-form {display:flex;gap:10px;align-items:center}
+.explorer input {font:14px/1.6 var(--body);width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--ink);padding:8px 0}
+.explorer input::placeholder {color:#8b95ab;font-size:12px}
+.explorer input:focus-visible {outline:2px solid #9caee7;outline-offset:3px;border-radius:4px}
+.explorer-form>button {flex-shrink:0;border:0;border-radius:50%;height:36px;width:36px;color:white;background:#4d68dc;font-size:22px;transition:transform .3s}
+.explorer-form>button:hover {transform:rotate(45deg)}
+.explorer-prompts {display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.explorer-prompts button {border:1px solid #e3e7f1;background:#f7f8fc;border-radius:20px;padding:5px 11px;font-size:11px;color:#6f7c99;transition:transform .25s,background .25s}
+.explorer-prompts button:hover {transform:translateY(-3px);background:#e9edfd}
+.explorer-prompts button span {margin-left:7px;color:#9aa7c3}
+.explorer-results {border-top:1px solid #e4e8f2;margin-top:15px;padding-top:5px}
+.explorer-result {width:100%;display:flex;gap:12px;text-align:left;align-items:center;border:0;border-radius:8px;padding:10px 6px;background:transparent;font-size:12px;color:#536789;animation:result-enter .4s both;animation-delay:calc(var(--result-index)*45ms)}
+.explorer-result:hover {background:#edf1fc}
+.explorer-result small {font:10px var(--mono);color:#8b9ac0}
+.explorer-result>span:last-child {margin-left:auto}
+.explorer-status {font-size:10px;color:#8793ac;line-height:1.7}
+.explorer-status:not(:empty) {margin-top:10px}
+.project,.system,.explorer {background-image:radial-gradient(350px circle at var(--pointer-x,-500px) var(--pointer-y,-500px),#b9c9ff24,transparent 75%)}
+.project {transition:transform .45s var(--ease),box-shadow .45s,border-color .45s}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.project:hover {transform:translateY(-6px);box-shadow:0 22px 50px #435ab318}.project:hover .project-visual svg {transform:scale(1.035)}.project-visual svg {transition:transform .8s var(--ease)}}
+@keyframes ambient-drift {to{transform:translate3d(-4%,4%,0) scale(1.08)}}
+@keyframes ink-flow {to{background-position:100% 50%}}
+@keyframes star-turn {to{transform:rotate(360deg)}}
+@keyframes result-enter {from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){.explorer{margin-top:24px;padding:15px}.explorer-label small{font-size:8px}.hero-grid{gap:30px}}
+@media(prefers-reduced-motion:reduce){.hero::before,.hero h1 em,.explorer-star,.explorer-result{animation:none}.project:hover{transform:none}}
