@@ -47,15 +47,14 @@
 <body>
 <div class="shell">
   <nav class="toolbar" aria-label="简历操作" id="toolbar">
-    <a href="./" id="back">← 返回作品集</a>
-    <a href="portfolio.html" id="application-portfolio">投递作品集 ↗</a>
+    <a href="./" id="back">← 完整作品集</a>
     <div class="actions"><button id="lang" type="button">Read in English</button> <button id="print" type="button">打印 / 保存 PDF</button></div>
   </nav>
   <main class="sheet">
     <section data-lang="zh">
       <header>
         <h1>周风鑫</h1><p class="lead">AI Infra 工程师｜分布式推理 · GPU 系统排障 · 性能验证</p>
-        <p class="meta">悉尼大学计算机科学硕士 · <a href="mailto:zhoufx@foxmail.com">zhoufx@foxmail.com</a> · <a href="https://github.com/ZFXzzz">github.com/ZFXzzz</a></p>
+        <p class="meta">悉尼大学计算机科学硕士 · <a href="mailto:zhoufx@foxmail.com">zhoufx@foxmail.com</a> · <a href="https://github.com/ZFXzzz">github.com/ZFXzzz</a> · <a href="https://zfxzzz.github.io/">作品集 zfxzzz.github.io</a></p>
       </header>
       <h2>开源贡献</h2>
       <ul>
@@ -80,7 +79,7 @@
     <section data-lang="en" hidden>
       <header>
         <h1>Fengxin Zhou</h1><p class="lead">AI Infrastructure · Distributed Inference · GPU Reliability</p>
-        <p class="meta">University of Sydney, Master of Computer Science · <a href="mailto:zhoufx@foxmail.com">zhoufx@foxmail.com</a> · <a href="https://github.com/ZFXzzz">github.com/ZFXzzz</a></p>
+        <p class="meta">University of Sydney, Master of Computer Science · <a href="mailto:zhoufx@foxmail.com">zhoufx@foxmail.com</a> · <a href="https://github.com/ZFXzzz">github.com/ZFXzzz</a> · <a href="https://zfxzzz.github.io/">Portfolio zfxzzz.github.io</a></p>
       </header>
       <h2>Open-source contributions</h2>
       <ul>
@@ -112,11 +111,8 @@
     document.documentElement.lang = en ? 'en' : 'zh-CN';
     document.title = en ? 'Fengxin Zhou | AI Infrastructure Resume' : '周风鑫｜AI Infra 简历';
     document.querySelectorAll('[data-lang]').forEach(section => section.hidden = section.dataset.lang !== lang);
-    const portfolio = document.getElementById('application-portfolio');
-    portfolio.textContent = en ? 'Share portfolio ↗' : '投递作品集 ↗';
-    portfolio.href = en ? 'portfolio-en.html' : 'portfolio.html';
     const back = document.getElementById('back');
-    back.textContent = en ? '← Back to portfolio' : '← 返回作品集';
+    back.textContent = en ? '← Full portfolio' : '← 完整作品集';
     back.href = './?lang=' + lang;
     document.getElementById('toolbar').setAttribute('aria-label', en ? 'Resume actions' : '简历操作');
     document.getElementById('lang').textContent = en ? '阅读中文版' : 'Read in English';
