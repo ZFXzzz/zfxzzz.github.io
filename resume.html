@@ -48,6 +48,7 @@
 <div class="shell">
   <nav class="toolbar" aria-label="简历操作" id="toolbar">
     <a href="./" id="back">← 返回作品集</a>
+    <a href="portfolio.html" id="application-portfolio">投递作品集 ↗</a>
     <div class="actions"><button id="lang" type="button">Read in English</button> <button id="print" type="button">打印 / 保存 PDF</button></div>
   </nav>
   <main class="sheet">
@@ -111,6 +112,9 @@
     document.documentElement.lang = en ? 'en' : 'zh-CN';
     document.title = en ? 'Fengxin Zhou | AI Infrastructure Resume' : '周风鑫｜AI Infra 简历';
     document.querySelectorAll('[data-lang]').forEach(section => section.hidden = section.dataset.lang !== lang);
+    const portfolio = document.getElementById('application-portfolio');
+    portfolio.textContent = en ? 'Share portfolio ↗' : '投递作品集 ↗';
+    portfolio.href = en ? 'portfolio-en.html' : 'portfolio.html';
     const back = document.getElementById('back');
     back.textContent = en ? '← Back to portfolio' : '← 返回作品集';
     back.href = './?lang=' + lang;

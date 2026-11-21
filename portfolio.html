@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="周风鑫的 AI Infra 作品集，精选 vLLM 分布式推理部署、GPU 系统排障与开源贡献。">
+  <title>周风鑫 | AI Infra 作品集</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://zfxzzz.github.io/portfolio.html">
+  <link rel="alternate" hreflang="en" href="https://zfxzzz.github.io/portfolio-en.html">
+  <link rel="stylesheet" href="portfolio.css?v=1">
+  <script src="portfolio.js?v=1" defer></script>
+</head>
+<body>
+  <nav class="toolbar" aria-label="作品集导航">
+    <a href="./?lang=zh">← 完整网站</a>
+    <div><a href="resume.html?lang=zh">在线简历</a><a href="portfolio-en.html" lang="en">English</a></div>
+  </nav>
+  <main class="sheet">
+    <header>
+      <p class="label">周风鑫 <span lang="en">Fengxin Zhou</span></p>
+      <h1>AI Infra 作品集</h1>
+      <p class="intro">多节点 LLM 推理部署、GPU 系统排障和性能验收。将部署故障与压测缺陷整理成可核验的上游贡献。</p>
+      <p class="profile">悉尼大学 · 计算机科学硕士 <span>·</span> <a href="https://github.com/ZFXzzz">GitHub</a> <span>·</span> <a href="mailto:zhoufx@foxmail.com">zhoufx@foxmail.com</a></p>
+    </header>
+
+    <section class="share" aria-label="投递材料">
+      <div>
+        <label for="share-url">作品集链接</label>
+        <input id="share-url" value="https://zfxzzz.github.io/portfolio.html" readonly>
+      </div>
+      <div class="share-actions">
+        <button type="button" data-copy data-copied="已复制链接" data-fallback="已选中链接，可手动复制" hidden>复制链接</button>
+        <a class="download" href="Fengxin-Zhou-AI-Infra-Portfolio-ZH.pdf" download>下载中文版 PDF ↓</a>
+      </div>
+      <span class="status" role="status"></span>
+    </section>
+
+    <section aria-labelledby="projects">
+      <h2 id="projects">精选工程案例</h2>
+      <article class="case">
+        <h3>Kimi K3 · 双节点 H20-3e 部署</h3>
+        <p class="stack">2 × 8 H20-3e · vLLM / Ray · TP16 + EP</p>
+        <p>对照跨 rank 日志与 ELF 依赖定位 CUDA JIT sampler 加载失败，隔离 CUDA 12.9 runtime 并使用 sampler 回退，恢复生成请求。</p>
+        <p class="result"><strong>314.46 聚合输出 tok/s</strong>，C32 下 32/32 请求完成，平均首 token 延迟 2.924 s。该轮请求输入 8,192 tokens，输出预算 512 tokens，启用前缀缓存。</p>
+        <p class="links"><a href="https://zfxzzz.github.io/?case=k3&amp;lang=zh">案例详情</a><a href="https://zfxzzz.github.io/evidence/k3-concurrency-20260914.csv">压测数据 CSV</a></p>
+      </article>
+
+      <article class="case">
+        <h3>DeepSeek V4.1 Flash · 四节点 DGX Spark 恢复</h3>
+        <p class="stack">4 × DGX Spark · vLLM TP4 / SIRCL · RoCE / NVIDIA CDI</p>
+        <p>分别检查管理链路、RoCE 数据面和容器 GPU 设备注入。修正管理隧道与地址生成配置，补齐 NVIDIA CDI 设备枚举路径。</p>
+        <p class="result"><strong>恢复 3 个 worker 管理连接，完成 16 项 GID 检查</strong>，通过 fabric 验证和 API 自检。</p>
+        <p class="links"><a href="https://zfxzzz.github.io/?case=spark&amp;lang=zh">案例详情</a><a href="https://github.com/FujitsuPolycom/sparkring/pull/403">SparkRing 排障文档 PR #403</a></p>
+      </article>
+    </section>
+
+    <section aria-labelledby="upstream">
+      <h2 id="upstream">精选开源贡献</h2>
+      <ul class="contributions">
+        <li><strong>FlashInfer · CUDA JIT 诊断。</strong> 提交 NVCC 主版本告警与 CPU 回归测试。 <a href="https://github.com/flashinfer-ai/flashinfer/issues/5145">Issue #5145</a> · <a href="https://github.com/flashinfer-ai/flashinfer/pull/5154">PR #5154</a></li>
+        <li><strong>vLLM · 峰值并发统计。</strong> 复现秒级分桶高估问题，提交请求起止事件计数与边界测试。 <a href="https://github.com/vllm-project/vllm/issues/56653">Issue #56653</a> · <a href="https://github.com/vllm-project/vllm/pull/56675">PR #56675</a></li>
+        <li><strong>vLLM · 部署验收。</strong> 报告 DeepSeek 工具调用问题，提供 Python 自检示例并评审社区 PR。另提议区分 KV Cache 容量估算、调度约束与服务 SLA。 <a href="https://github.com/vllm-project/vllm/issues/69114">Issue #69114</a> · <a href="https://github.com/ZFXzzz/vllm/commit/7046417ffcfe84c69102d132951bd59bc74ec0d5">示例</a> · <a href="https://github.com/vllm-project/vllm/pull/69131#discussion_r4653331184">评审</a> · <a href="https://github.com/vllm-project/vllm/issues/69117">Issue #69117</a></li>
+      </ul>
+    </section>
+
+    <footer><a href="https://zfxzzz.github.io/portfolio.html">zfxzzz.github.io/portfolio.html</a><a href="https://zfxzzz.github.io/?lang=zh">完整工程作品集 →</a></footer>
+  </main>
+</body>
+</html>
