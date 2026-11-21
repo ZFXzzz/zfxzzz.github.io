@@ -4,7 +4,7 @@ Bilingual portfolio covering distributed inference, speech services, GPU diagnos
 
 - Website: https://zfxzzz.github.io/
 - Entry point: `index.html`
-- Application portfolio: `portfolio.html` (Chinese) and `portfolio-en.html` (English). These pages are the editable sources for the downloadable PDFs. After an update, print each page to A4 at 100% with browser headers and footers off, then save over its linked PDF.
+- Application portfolio: share the direct URL to `portfolio.html` (Chinese) or `portfolio-en.html` (English).
 - Hosting: static HTML, CSS and JavaScript; no build step.
 - Project links: `?case=k3&lang=zh` or `?case=k2&lang=en`.
 - Curated experiment notes and CSV: `evidence/`.
