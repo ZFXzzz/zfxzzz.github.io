@@ -424,3 +424,28 @@ dialog[open] {animation:dialog-in .35s var(--ease)}
 @media(prefers-reduced-motion:reduce){.wheel-ring,.wheel-node{transition:none}}
 .project-wheel {overflow:clip}
 @media(max-width:760px){.wheel-ring{inset:0 12px}.note-tabs{max-width:100%;overflow-x:auto}.note-tab{flex-shrink:0}}
+
+/* Evidence links and small-screen navigation. */
+.hero-buttons { flex-wrap:wrap; }
+.hero-secondary { display:flex; gap:10px 20px; flex-wrap:wrap; align-items:center; margin-top:16px; }
+.hero-secondary > a, .hero-secondary button { color:#3853ac; font-size:13px; font-weight:600; }
+.hero-secondary > a:hover { text-decoration:underline; text-underline-offset:4px; }
+#opensource .contributions { grid-template-columns:minmax(200px,.66fr) minmax(0,1.34fr); }
+#opensource .contribution-row { grid-template-columns:40px minmax(0,1fr); }
+.contribution-project { display:block; color:#52648b; font-size:12px; font-weight:600; }
+.contribution-row h3 { color:var(--ink); font-size:19px; line-height:1.45; margin:4px 0 0; }
+#opensource .contribution-row p { margin-block:8px 10px; }
+#opensource .contribution-links a { color:#3853ac; font-size:12px; text-decoration:underline; text-underline-offset:3px; }
+.public-tools { margin-top:36px; padding-top:22px; border-top:1px solid var(--line); }
+.public-tools h3 { color:var(--ink); font-size:20px; margin:0 0 14px; }
+.public-tool-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.public-tool { border:1px solid var(--line); border-radius:16px; background:#fff; padding:18px 20px; }
+.public-tool h4 { color:#3853ac; font-size:15px; margin:0; }
+.public-tool h4 a:hover { text-decoration:underline; text-underline-offset:3px; }
+.public-tool p { color:#52617b; font-size:14px; margin:7px 0 0; }
+@media(max-width:760px) {
+  #opensource .contributions, .public-tool-grid { grid-template-columns:minmax(0,1fr); }
+  #opensource .contribution-row { grid-template-columns:35px minmax(0,1fr); }
+  #opensource .contribution-links a { padding-block:7px; }
+  .public-tools { margin-top:26px; }
+}
