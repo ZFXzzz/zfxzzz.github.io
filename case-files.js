@@ -7,7 +7,7 @@ const portfolioCaseFiles = {
     blocks:[
       {h:['管理连接与 RoCE','Management connectivity and RoCE'],p:['逐端口核对 RoCE v2 GID，修正地址生成模式与管理隧道端点。三个 worker 的管理连接恢复，16 项 GID 检查和 fabric 验证通过。','Checked RoCE v2 GIDs by port and corrected address generation and the management-tunnel endpoint. All three workers regained management connectivity and passed the fabric checks.']},
       {h:['容器 GPU 注入','Container GPU discovery'],p:['在一个节点的启动日志中定位 NVIDIA CDI 刷新服务缺失。更新 NVIDIA Container Toolkit，确认 CDI spec 与设备枚举，再启动四个 rank 并完成 API 自检。','Identified a missing NVIDIA CDI refresh service in startup logs. Updated the Container Toolkit, verified the CDI device entries, and then started all four ranks and passed the API self-check.']},
-      {h:['将现场恢复写成排障步骤','Turning recovery into documentation'],p:['在 SparkRing 提交排障文档，说明如何检查宿主机服务单元、Toolkit 和 CDI spec，以及何时适合重试安装。','Submitted SparkRing troubleshooting guidance covering the host unit, Toolkit version and CDI specification checks before retrying the deployment.']}
+      {h:['将现场恢复写成排障步骤','Turning recovery into documentation'],p:['我撰写的排障文档已通过 PR #403 合入 SparkRing 主分支，说明重试安装前如何检查宿主机服务单元、Toolkit 与 CDI spec。','My SparkRing troubleshooting guidance merged into the main branch in PR #403. It covers how to check the host unit, Toolkit version and CDI specification before retrying the deployment.']}
     ],
     questions:[['为什么管理 SSH 与 RoCE 数据面要分开检查？','Why check management SSH and the RoCE data path separately?'],['怎样证实容器已通过 CDI 获得 GPU 设备？','How do you verify that a container received GPU access through CDI?']],
     links:[['SparkRing PR #403','https://github.com/FujitsuPolycom/sparkring/pull/403']],
